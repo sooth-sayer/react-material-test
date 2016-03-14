@@ -1,7 +1,9 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
+import Test from './components/test.jsx';
+
 ReactDOM.render(
-  <h1>Hello, world!</h1>,
+  <Test>Hello, world!</Test>,
   document.getElementById('example')
 );
