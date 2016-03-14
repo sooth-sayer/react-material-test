@@ -12,6 +12,10 @@ module.exports = {
     contentBase: 'build/',
     host: '0.0.0.0',
     port: '8080',
+    watchOptions: {
+      aggregateTimeout: 300,
+      poll: 1000,
+    },
   },
   module: {
     loaders: [
