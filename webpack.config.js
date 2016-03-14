@@ -1,7 +1,7 @@
 const path = require('path');
 module.exports = {
   entry: {
-    app: ['./app/index.js'],
+    app: ['./app/index.jsx'],
   },
   output: {
     publicPath: '/assets/',
@@ -16,6 +16,7 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.css$/, loader: 'style!css' },
+      { test: /\.jsx$/, loader: 'babel-loader' },
     ],
   },
 };
