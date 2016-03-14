@@ -14,4 +14,4 @@ RUN npm install
 COPY . $APP_HOME
 
 EXPOSE 8080
-CMD ["webpack-dev-server", "--progress", "--colors"]
+CMD ["webpack-dev-server", "--progress", "--colors", "--hot", "--inline"]

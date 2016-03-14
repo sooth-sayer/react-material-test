@@ -1,6 +1,7 @@
 .*
 *.swp
 node_modules
+build/main.bundle.js
 
 !.gitignore
 !.eslintrc
