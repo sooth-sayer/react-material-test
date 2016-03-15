@@ -10,13 +10,16 @@ DOCKER_COMPOSE_SHELL=$(DOCKER_COMPOSE) run $(DOCKER_COMPOSE_RUN_OPTIONS) web /bi
 DOCKER_COMPOSE_BUILD=$(DOCKER_COMPOSE) build $(DOCKER_COMPOSE_BUILD_OPTIONS)
 DOCKER_COMPOSE_STOP=$(DOCKER_COMPOSE) stop
 
-run_dev_server:
+build_deps:
+	npm install
+
+run_dev_server: build_deps
 	webpack-dev-server --progress --color --inline --hot
 
-build_dev_bundle:
+build_dev_bundle: build_deps
 	webpack --progress --color
 
-build_dist_bundle:
+build_dist_bundle: build_deps
 	webpack --progress --color --config webpack.dist.config.js
 
 
@@ -41,5 +44,8 @@ dist: bundle
 
 build_image:
 	$(DOCKER_COMPOSE_BUILD)
+
+clean:
+	rm -rf build public/main.bundle.js node_modules
 
 .PHONY: build start_dev dev_bundle build_image
