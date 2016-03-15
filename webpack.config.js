@@ -25,8 +25,10 @@ module.exports = {
       poll: 1000,
     },
   },
+
   module: {
     loaders: [
+      { test: /\.styl$/, loader: 'style!css!stylus' },
       { test: /\.css$/, loader: 'style!css' },
       { test: /\.jsx$/, loader: 'babel-loader' },
     ],
