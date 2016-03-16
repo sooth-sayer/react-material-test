@@ -5,7 +5,7 @@ module.exports = {
   entry: {
     app: [
       'webpack/hot/dev-server',
-      './app/index.jsx',
+      './app/index.js',
     ],
   },
   output: {
@@ -14,7 +14,7 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
   },
 
-  devtool: "#eval-source-map",
+  devtool: '#eval-source-map',
 
   devServer: {
     contentBase: 'app/',
@@ -22,6 +22,7 @@ module.exports = {
     port: '8080',
 
     hot: true,
+
     watchOptions: {
       aggregateTimeout: 300,
       poll: 1000,
@@ -32,13 +33,13 @@ module.exports = {
     loaders: [
       { test: /\.styl$/, loader: 'style!css!stylus' },
       { test: /\.css$/, loader: 'style!css' },
-      { test: /\.jsx$/, loader: 'babel-loader' },
+      { test: /\.js$/, loader: 'babel-loader', include: path.resolve(__dirname, 'app/') },
     ],
   },
 
   plugins: [
     new webpack.EnvironmentPlugin([
-        "ENV",
+      'ENV',
     ]),
   ],
 };

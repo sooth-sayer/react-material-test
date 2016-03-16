@@ -4,7 +4,7 @@ const webpack = require('webpack');
 module.exports = {
   entry: {
     app: [
-      './app/index.jsx',
+      './app/index.js',
     ],
   },
 
@@ -18,13 +18,13 @@ module.exports = {
     loaders: [
       { test: /\.styl$/, loader: 'style!css!stylus' },
       { test: /\.css$/, loader: 'style!css' },
-      { test: /\.jsx$/, loader: 'babel-loader' },
+      { test: /\.js$/, loader: 'babel-loader', include: path.resolve(__dirname, 'app/') },
     ],
   },
 
   plugins: [
     new webpack.EnvironmentPlugin([
-        "ENV",
+      'ENV',
     ]),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
