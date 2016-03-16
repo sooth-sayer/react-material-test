@@ -1,4 +1,6 @@
 const path = require('path');
+const webpack = require('webpack');
+
 module.exports = {
   entry: {
     app: [
@@ -14,8 +16,15 @@ module.exports = {
 
   module: {
     loaders: [
+      { test: /\.styl$/, loader: 'style!css!stylus' },
       { test: /\.css$/, loader: 'style!css' },
       { test: /\.jsx$/, loader: 'babel-loader' },
     ],
   },
+
+  plugins: [
+    new webpack.EnvironmentPlugin([
+        "ENV",
+    ]),
+  ],
 };
