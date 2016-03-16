@@ -13,18 +13,18 @@ DOCKER_COMPOSE_STOP=$(DOCKER_COMPOSE) stop
 build_deps:
 	npm install
 
-run_dev_server: build_deps
-	webpack-dev-server --progress --color --inline --hot
+run_dev_server:
+	ENV=dev webpack-dev-server --progress --color --inline --hot
 
 build_dev_bundle: build_deps
-	webpack --progress --color
+	ENV=dev webpack --progress --color
 
 build_dist_bundle: build_deps
 	webpack --progress --color --config webpack.dist.config.js
 
 
 start_dev:
-	$(DOCKER_COMPOSE_RUN) "make run_dev_server"
+	$(DOCKER_COMPOSE_RUN) "make build_deps run_dev_server"
 
 stop_dev:
 	$(DOCKER_COMPOSE_STOP)
