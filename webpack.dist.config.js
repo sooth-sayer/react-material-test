@@ -26,5 +26,10 @@ module.exports = {
     new webpack.EnvironmentPlugin([
         "ENV",
     ]),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+      },
+    }),
   ],
 };
