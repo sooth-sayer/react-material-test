@@ -14,7 +14,7 @@ build_deps:
 	npm install
 
 run_dev_server:
-	ENV=dev webpack-dev-server --progress --color --inline --hot --watch-poll
+	ENV=dev webpack-dev-server --progress --color --inline --hot --watch
 
 build_dev_bundle: build_deps
 	ENV=dev webpack --progress --color

@@ -24,11 +24,10 @@ module.exports = {
     hot: true,
     historyApiFallback: true,
 
-
-    // watchOptions: {
-    //   aggregateTimeout: 300,
-    //   poll: 1000,
-    // },
+    watchOptions: {
+      aggregateTimeout: 200,
+      poll: 1000,
+    },
   },
 
   module: {
