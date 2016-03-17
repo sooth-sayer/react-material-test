@@ -26,6 +26,7 @@
         "node": true,
         "browser": true
     },
+    "parser": "babel-eslint",
     "extends": "eslint:recommended",
     "ecmaFeatures": {
         "modules": true,

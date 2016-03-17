@@ -6,20 +6,17 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from './reducers/app';
 
-import { Router, Route, browserHistory } from 'react-router';
-
-import App from './components/App';
-import Products from './containers/Products';
+import routes from './router/routes';
+import Router from './components/Router';
 
 const store = createStore(reducers);
 
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
+
 render(
   <Provider store={store}>
-    <Router history={browserHistory}>
-      <Route path="/" component={App}>
-        <Route path="products" component={Products} />
-      </Route>
-    </Router>
+    <Router root={routes} />
   </Provider>,
   document.getElementById('example')
 );
