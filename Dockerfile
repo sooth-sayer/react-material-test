@@ -1,5 +1,8 @@
 FROM node:5.6.0
 
+RUN apt-get update
+RUN apt-get install -y libelf-dev
+
 RUN npm install -g webpack
 RUN npm install -g webpack-dev-server
 
@@ -14,4 +17,4 @@ RUN npm install
 COPY . $APP_HOME
 
 EXPOSE 8080
-CMD ["webpack-dev-server", "--progress", "--colors", "--hot", "--inline"]
+# CMD ["webpack-dev-server", "--progress", "--colors", "--hot", "--inline"]

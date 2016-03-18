@@ -15,4 +15,8 @@ const router = ({ root }) => (
   </Router>
 );
 
+router.propTypes = {
+  root: React.PropTypes.object.isRequired,
+};
+
 export default router;

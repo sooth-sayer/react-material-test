@@ -10,14 +10,19 @@ DOCKER_COMPOSE_SHELL=$(DOCKER_COMPOSE) run $(DOCKER_COMPOSE_RUN_OPTIONS) web /bi
 DOCKER_COMPOSE_BUILD=$(DOCKER_COMPOSE) build $(DOCKER_COMPOSE_BUILD_OPTIONS)
 DOCKER_COMPOSE_STOP=$(DOCKER_COMPOSE) stop
 
+DEV_ENV=ENV=dev PATH=$(shell npm bin):$(PATH)
+
 build_deps:
 	npm install
 
 run_dev_server:
-	ENV=dev webpack-dev-server --progress --color --inline --hot --watch
+	$(DEV_ENV) webpack-dev-server --progress --color --inline --hot --watch
 
 build_dev_bundle: build_deps
-	ENV=dev webpack --progress --color
+	$(DEV_ENV) webpack --progress --color
+
+flow:
+	$(DEV_ENV) flow check
 
 build_dist_bundle: build_deps
 	webpack --progress --color --config webpack.dist.config.js
@@ -31,6 +36,10 @@ stop_dev:
 
 start_dev_shell:
 	$(DOCKER_COMPOSE_SHELL)
+
+flow_check:
+	$(DOCKER_COMPOSE_RUN) "make flow"
+
 
 dev_bundle:
 	$(DOCKER_COMPOSE_RUN) "make build_dev_bundle"

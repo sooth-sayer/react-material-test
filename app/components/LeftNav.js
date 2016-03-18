@@ -2,7 +2,7 @@ import React from 'react';
 import LeftNav from 'material-ui/lib/left-nav';
 import Header from './LeftNav/Header';
 
-const leftNav = ({ open, children, onToggle }) => (
+const leftNav = ({ open, onToggle, children }) => (
   <LeftNav
     open={open}
     docked={false}
@@ -12,5 +12,10 @@ const leftNav = ({ open, children, onToggle }) => (
     {children}
   </LeftNav>
 );
+
+leftNav.propTypes = {
+  open: React.PropTypes.bool.isRequired,
+  onToggle: React.PropTypes.func,
+};
 
 export default leftNav;
