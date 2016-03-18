@@ -3,7 +3,7 @@ import AppBar from 'material-ui/lib/app-bar';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import LeftNav from './LeftNav';
 
-import { getCurrentRouteDescription } from '../helpers/navigation';
+import { findRoute } from '../helpers/navigation';
 
 class App extends React.Component {
   constructor() {
@@ -30,7 +30,8 @@ class App extends React.Component {
   }
 
   render() {
-    const title = getCurrentRouteDescription(this.context.router);
+    const route = findRoute((path) => this.context.router.isActive(path));
+    const title = route.description;
 
     return (
       <div>
