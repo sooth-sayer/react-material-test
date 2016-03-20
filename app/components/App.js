@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import AppBar from 'material-ui/lib/app-bar';
 import MenuItem from 'material-ui/lib/menus/menu-item';
@@ -11,23 +13,27 @@ class App extends React.Component {
     this.state = { open: false };
   }
 
-  toggleLeftNav = (open) => {
-    this.setState({ open: open });
-  }
+  toggleLeftNav: { (x: boolean): void } =
+    (open) => {
+      this.setState({ open: open });
+    };
 
-  openLeftNav = () => {
-    this.toggleLeftNav(true);
-  }
+  openLeftNav: { (): void } =
+    () => {
+      this.toggleLeftNav(true);
+    };
 
-  gotoProducts = () => {
-    this.toggleLeftNav(false);
-    this.context.router.push('/products');
-  }
+  gotoProducts: { (): void } =
+    () => {
+      this.toggleLeftNav(false);
+      this.context.router.push('/products');
+    };
 
-  gotoFeedback = () => {
-    this.toggleLeftNav(false);
-    this.context.router.push('/feedback');
-  }
+  gotoFeedback: { (): void } =
+    () => {
+      this.toggleLeftNav(false);
+      this.context.router.push('/feedback');
+    };
 
   render() {
     const route = findRoute((path) => this.context.router.isActive(path));

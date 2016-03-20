@@ -12,7 +12,7 @@ const header = ({ style }) => {
     ...style,
   };
 
-  const avatarBackgroundColor = theme.rawTheme.palette.accent1Color;
+  const avatarBackgroundColor = theme.rawTheme.palette.primary1Color;
 
   return (
     <div className="leftNavHeader" style={containerStyle}>
