@@ -28,30 +28,30 @@ build_dist_bundle: build_deps
 	webpack --progress --color --config webpack.dist.config.js
 
 
-start_dev:
+docker_start_dev:
 	$(DOCKER_COMPOSE_RUN) "make build_deps run_dev_server"
 
-stop_dev:
+docker_stop_dev:
 	$(DOCKER_COMPOSE_STOP)
 
-start_dev_shell:
+docker_start_dev_shell:
 	$(DOCKER_COMPOSE_SHELL)
 
-flow_check:
+docker_flow_check:
 	$(DOCKER_COMPOSE_RUN) "make flow"
 
 
-dev_bundle:
+docker_dev_bundle:
 	$(DOCKER_COMPOSE_RUN) "make build_dev_bundle"
 
-bundle:
+docker_bundle:
 	$(DOCKER_COMPOSE_RUN) "make build_dist_bundle"
 
-dist: bundle
+docker_dist: docker_bundle
 	$(DOCKER_COMPOSE_RUN) "cp build/main.bundle.js public/main.bundle.js"
 
 
-build_image:
+docker_build_image:
 	$(DOCKER_COMPOSE_BUILD)
 
 clean:
