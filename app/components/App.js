@@ -3,6 +3,7 @@
 import React from 'react';
 import AppBar from 'material-ui/lib/app-bar';
 import MenuItem from 'material-ui/lib/menus/menu-item';
+import Paper from 'material-ui/lib/paper';
 import LeftNav from './LeftNav';
 
 import { findRoute } from '../helpers/navigation';
@@ -40,7 +41,7 @@ class App extends React.Component {
     const title = route.description;
 
     return (
-      <div>
+      <div className='app-container'>
         <AppBar
           title={title}
           onLeftIconButtonTouchTap={this.openLeftNav}
@@ -53,7 +54,9 @@ class App extends React.Component {
             <MenuItem onTouchTap={this.gotoFeedback}>Feedback</MenuItem>
           </LeftNav>
         </AppBar>
-        {this.props.children}
+        <Paper className='app-body' zDepth={0}>
+          {this.props.children}
+        </Paper>
       </div>
     );
   }

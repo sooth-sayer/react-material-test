@@ -8,11 +8,12 @@ const header = ({ style }) => {
 
   const containerStyle = {
     height: theme.appBar.height,
-    background: theme.rawTheme.palette.primary3Color,
+    background: theme.rawTheme.palette.primary1Color,
     ...style,
   };
 
   const avatarBackgroundColor = theme.rawTheme.palette.primary1Color;
+  const textColor = theme.rawTheme.palette.alternateTextColor;
 
   return (
     <div className="leftNavHeader" style={containerStyle}>
@@ -21,7 +22,7 @@ const header = ({ style }) => {
         icon={<FontIcon className="material-icons">account_box</FontIcon>}
         backgroundColor={avatarBackgroundColor}
       />
-      <span>Welcome, User!</span>
+      <span style={{ color: textColor }}>Welcome, User!</span>
     </div>
   );
 };
