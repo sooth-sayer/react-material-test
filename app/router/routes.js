@@ -19,6 +19,14 @@ const root = {
   },
 };
 
+export function productsPath() {
+  return root.routes.products.path;
+}
+
+export function feedbackPath() {
+  return root.routes.feedback.path;
+}
+
 export function productPath(id) {
   const path = root.routes.products.path + '/' + root.routes.products.routes.product.path;
   return path.replace(/:id/, id);

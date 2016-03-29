@@ -7,6 +7,7 @@ import Paper from 'material-ui/lib/paper';
 import LeftNav from './LeftNav';
 
 import { findRoute } from '../helpers/navigation';
+import { productsPath, feedbackPath } from '../router/routes';
 
 class App extends React.Component {
   constructor() {
@@ -27,13 +28,13 @@ class App extends React.Component {
   gotoProducts: { (): void } =
     () => {
       this.toggleLeftNav(false);
-      this.context.router.push('/products');
+      this.context.router.push(productsPath());
     };
 
   gotoFeedback: { (): void } =
     () => {
       this.toggleLeftNav(false);
-      this.context.router.push('/feedback');
+      this.context.router.push(feedbackPath());
     };
 
   render() {

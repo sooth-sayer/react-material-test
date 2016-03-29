@@ -10,7 +10,7 @@ import FlatButton from 'material-ui/lib/flat-button';
 
 import styles from './Products/styles';
 
-import {productPath} from '../router/routes';
+import { productPath } from '../router/routes';
 
 const header = [
   { name: 'id', tooltip: 'The ID' },
