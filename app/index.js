@@ -7,7 +7,7 @@ import { createStore } from 'redux';
 import reducers from './reducers/app';
 
 import routes from './router/routes';
-import Router from './components/Router';
+import Router from './Router';
 
 const store = createStore(reducers);
 
