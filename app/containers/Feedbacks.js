@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Feedback from '../components/Feedback';
+import Feedbacks from '../components/Feedbacks';
 
 function mapStateToProps(state) {
   return {...state};
@@ -10,4 +10,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Feedback);
+export default connect(mapStateToProps, mapDispatchToProps)(Feedbacks);

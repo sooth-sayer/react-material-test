@@ -4,7 +4,7 @@ import { Router, Route, IndexRedirect, browserHistory } from 'react-router';
 import App from './components/App';
 import Products from './containers/Products';
 import Product from './containers/Products/Product';
-import Feedback from './containers/Feedback';
+import Feedbacks from './containers/Feedbacks';
 
 const router = ({ root }) => (
   <Router history={browserHistory}>
@@ -13,7 +13,7 @@ const router = ({ root }) => (
       <Route path={root.routes.products.path} component={Products}>
         <Route path={root.routes.products.routes.product.path} component={Product} />
       </Route>
-      <Route path={root.routes.feedback.path} component={Feedback} />
+      <Route path={root.routes.feedback.path} component={Feedbacks} />
     </Route>
   </Router>
 );
