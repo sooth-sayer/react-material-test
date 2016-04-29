@@ -1,12 +1,11 @@
-import { types } from '../actions/products';
+import { types } from '../actions/feedbacks';
 
 const initialState = {
-  feedbacks: [
-    { id: 1, name: 'Savannah Caldwell', message: '' },
-    { id: 2, name: 'Jimmie Willis', message: '' },
-    { id: 3, name: 'Alice Hudson', message: '' },
-    { id: 4, name: 'Crystal Pearson', message: '' },
-  ],
+  feedbacks: [],
+  feedback: null,
+  feedbackAvatar: null,
+  feedbackAvatarLoading: false,
+  feedbackAvatarError: false,
 };
 
 function feedbacks(state = initialState, action) {
@@ -14,7 +13,31 @@ function feedbacks(state = initialState, action) {
   case types.CREATE:
     return Object.assign({}, {
       ...state,
-      feedbacks: state.feedbacks.concat([ action.feedback ]),
+      feedbacks: state.feedbacks.concat([ {...action.feedback, avatar: state.feedbackAvatar} ]),
+    });
+
+  case types.AVATAR_RECEIVE:
+    return Object.assign({}, {
+      ...state,
+      feedbackAvatar: action.avatar,
+      // feedbackAvatarLoading: false,
+      feedbackAvatarError: false,
+    });
+
+  case types.AVATAR_REQUEST:
+    return Object.assign({}, {
+      ...state,
+      feedbackAvatarLoading: true,
+      feedbackAvatar: null,
+      feedbackAvatarError: false,
+    });
+
+  case types.AVATAR_RECEIVE_ERROR:
+    return Object.assign({}, {
+      ...state,
+      feedbackAvatar: null,
+      feedbackAvatarLoading: false,
+      feedbackAvatarError: true,
     });
 
   default:

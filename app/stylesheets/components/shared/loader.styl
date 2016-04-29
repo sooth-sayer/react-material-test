@@ -1,0 +1,44 @@
+pi = 3.14159
+r = 10
+length = pi * 2 * r
+gap = 3/4
+dash1 = 0 length
+dash2 = length * gap, length * (1 - gap)
+
+@keyframes fillunfill
+  0%
+    stroke-dashoffset: 0
+    stroke-dasharray: dash1
+  50%
+    stroke-dashoffset: 0
+    stroke-dasharray: dash2
+  100%
+    stroke-dashoffset: - gap * length
+    stroke-dasharray: dash1
+
+@keyframes steps
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(-360deg)
+
+@keyframes rotate
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(360deg)
+
+svg.loader-wrapper
+  .loader
+    animation: rotate 2.2s linear infinite
+    transform-origin: center center
+
+    circle
+      fill: none
+      stroke: red
+      stroke-linecap: round
+      stroke-width: 4%
+      r: r
+
+      animation: fillunfill 1.5s ease infinite, steps 6s steps(4) infinite
+      transform-origin: center center

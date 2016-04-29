@@ -5,6 +5,7 @@
     "linebreak-style": [ 2, "unix" ],
     "semi": [ 2, "always" ],
     "comma-dangle": [ 2, "always-multiline" ],
+    "no-console": [ 2, { allow: ["info", "warn", "error"] }],
     "react/jsx-no-undef": 1
   },
 
