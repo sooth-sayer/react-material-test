@@ -1,21 +1,22 @@
 import React from 'react';
-import LeftNav from 'material-ui/lib/left-nav';
+import Drawer from 'material-ui/Drawer';
 import Header from './LeftNav/Header';
 
 const leftNav = ({ open, onToggle, children }) => (
-  <LeftNav
+  <Drawer
     open={open}
     docked={false}
     onRequestChange={onToggle}
   >
     <Header />
     {children}
-  </LeftNav>
+  </Drawer>
 );
 
 leftNav.propTypes = {
   open: React.PropTypes.bool.isRequired,
   onToggle: React.PropTypes.func,
+  children: React.PropTypes.array,
 };
 
 export default leftNav;

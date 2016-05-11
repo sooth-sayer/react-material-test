@@ -1,7 +1,7 @@
 import React from 'react';
-import getMuiTheme from 'material-ui/lib/styles/getMuiTheme';
-import Avatar from 'material-ui/lib/avatar';
-import FontIcon from 'material-ui/lib/font-icon';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import Avatar from 'material-ui/Avatar';
+import FontIcon from 'material-ui/FontIcon';
 
 const header = ({ style }) => {
   const theme = getMuiTheme();
@@ -25,6 +25,10 @@ const header = ({ style }) => {
       <span style={{ color: textColor }}>Welcome, User!</span>
     </div>
   );
+};
+
+header.propTypes = {
+  style: React.PropTypes.object,
 };
 
 export default header;

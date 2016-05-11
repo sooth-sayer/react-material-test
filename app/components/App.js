@@ -1,9 +1,11 @@
 // @flow
 
 import React from 'react';
-import AppBar from 'material-ui/lib/app-bar';
-import MenuItem from 'material-ui/lib/menus/menu-item';
-import Paper from 'material-ui/lib/paper';
+import AppBar from 'material-ui/AppBar';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MenuItem from 'material-ui/MenuItem';
+import Paper from 'material-ui/Paper';
 import LeftNav from './LeftNav';
 
 import { findRoute } from '../helpers/navigation';
@@ -42,29 +44,35 @@ class App extends React.Component {
     const title = route.description;
 
     return (
-      <div className='app-container'>
-        <AppBar
-          title={title}
-          onLeftIconButtonTouchTap={this.openLeftNav}
-        >
-          <LeftNav
-            open={this.state.open}
-            onToggle={this.toggleLeftNav}
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
+        <div className='app-container'>
+          <AppBar
+            title={title}
+            onLeftIconButtonTouchTap={this.openLeftNav}
           >
-            <MenuItem onTouchTap={this.gotoProducts}>Products</MenuItem>
-            <MenuItem onTouchTap={this.gotoFeedback}>Feedback</MenuItem>
-          </LeftNav>
-        </AppBar>
-        <Paper className='app-body' zDepth={0}>
-          {this.props.children}
-        </Paper>
-      </div>
+            <LeftNav
+              open={this.state.open}
+              onToggle={this.toggleLeftNav}
+            >
+              <MenuItem onTouchTap={this.gotoProducts}>Products</MenuItem>
+              <MenuItem onTouchTap={this.gotoFeedback}>Feedback</MenuItem>
+            </LeftNav>
+          </AppBar>
+          <Paper className='app-body' zDepth={0}>
+            {this.props.children}
+          </Paper>
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
 
 App.contextTypes = {
   router: React.PropTypes.object,
+};
+
+App.propTypes = {
+  children: React.PropTypes.oneOfType([React.PropTypes.array, React.PropTypes.object]),
 };
 
 export default App;

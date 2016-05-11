@@ -1,15 +1,11 @@
 import React from 'react';
-import Card from 'material-ui/lib/card/card';
-import CardHeader from 'material-ui/lib/card/card-header';
-import CardText from 'material-ui/lib/card/card-text';
-import CardTitle from 'material-ui/lib/card/card-title';
-import CardMedia from 'material-ui/lib/card/card-media';
+import { Card, CardHeader, CardText, CardTitle, CardMedia } from 'material-ui/Card';
 
 import styles from './Product/styles';
 
 const noImage = require('../../img/No-image-found.jpg');
 
-export default (params) => {
+const product = (params) => {
   const { product } = params;
   return <Card>
     <CardHeader
@@ -31,3 +27,5 @@ export default (params) => {
     </CardText>
   </Card>;
 };
+
+export default product;

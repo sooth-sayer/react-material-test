@@ -1,8 +1,6 @@
 import React from 'react';
-import List from 'material-ui/lib/lists/list';
-import Card from 'material-ui/lib/card/card';
-import CardHeader from 'material-ui/lib/card/card-header';
-import CardText from 'material-ui/lib/card/card-text';
+import List from 'material-ui/List';
+import { Card, CardHeader, CardText } from 'material-ui/Card';
 import Loader from './shared/Loader';
 
 class Feedbacks extends React.Component {

@@ -1,12 +1,7 @@
 import React from 'react';
-import Table from 'material-ui/lib/table/table';
-import TableHeader from 'material-ui/lib/table/table-header';
-import TableHeaderColumn from 'material-ui/lib/table/table-header-column';
-import TableRow from 'material-ui/lib/table/table-row';
-import TableRowColumn from 'material-ui/lib/table/table-row-column';
-import TableBody from 'material-ui/lib/table/table-body';
-import Dialog from 'material-ui/lib/dialog';
-import FlatButton from 'material-ui/lib/flat-button';
+import { Table, TableHeader, TableHeaderColumn, TableRow, TableRowColumn, TableBody } from 'material-ui/Table';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
 
 import styles from './Products/styles';
 
@@ -88,6 +83,12 @@ class Products extends React.Component {
     </div>;
   }
 }
+
+Products.propTypes = {
+  children: React.PropTypes.array,
+  products: React.PropTypes.array.isRequired,
+  onSort: React.PropTypes.func.isRequired,
+};
 
 Products.contextTypes = {
   router: React.PropTypes.object,
