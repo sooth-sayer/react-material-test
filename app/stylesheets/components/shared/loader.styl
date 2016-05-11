@@ -1,5 +1,5 @@
 pi = 3.14159
-r = 30
+r = 45
 length = pi * 2 * r
 gap = 3/4
 dash1 = 0 length
@@ -29,6 +29,9 @@ dash2 = length * gap, length * (1 - gap)
     transform: rotate(360deg)
 
 svg.loader-wrapper
+  display: flex
+  flex-grow: 1
+
   .loader
     animation: rotate 2.2s linear infinite
     transform-origin: center center
@@ -37,7 +40,7 @@ svg.loader-wrapper
       fill: none
       stroke: red
       stroke-linecap: round
-      stroke-width: 4%
+      stroke-width: 10
       r: r
 
       animation: fillunfill 1.5s ease infinite, steps 6s steps(4) infinite

@@ -85,7 +85,7 @@ class Products extends React.Component {
 }
 
 Products.propTypes = {
-  children: React.PropTypes.array,
+  children: React.PropTypes.oneOfType([React.PropTypes.array, React.PropTypes.object]),
   products: React.PropTypes.array.isRequired,
   onSort: React.PropTypes.func.isRequired,
 };
