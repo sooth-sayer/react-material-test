@@ -42,9 +42,10 @@ class App extends React.Component {
   render() {
     const route = findRoute((path) => this.context.router.isActive(path));
     const title = route.description;
+    const theme = getMuiTheme();
 
     return (
-      <MuiThemeProvider muiTheme={getMuiTheme()}>
+      <MuiThemeProvider muiTheme={theme}>
         <div className='app-container'>
           <AppBar
             title={title}
@@ -53,6 +54,7 @@ class App extends React.Component {
             <LeftNav
               open={this.state.open}
               onToggle={this.toggleLeftNav}
+              theme={theme}
             >
               <MenuItem onTouchTap={this.gotoProducts}>Products</MenuItem>
               <MenuItem onTouchTap={this.gotoFeedback}>Feedback</MenuItem>

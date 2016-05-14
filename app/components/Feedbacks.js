@@ -2,7 +2,6 @@ import React from 'react';
 import List from 'material-ui/List';
 import { Card, CardHeader, CardText } from 'material-ui/Card';
 import Loader from './shared/Loader';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 class Feedbacks extends React.Component {
   componentDidMount() {
@@ -10,19 +9,25 @@ class Feedbacks extends React.Component {
   }
 
   getLoaderStyle() {
-    const iconSize = 40;
-    return { width: iconSize, height: iconSize };
+    const iconSize = 35;
+    const stroke = this.context.muiTheme.palette.primary3Color;
+    return { width: iconSize, height: iconSize, stroke: stroke  };
+  }
+
+  renderAvatar() {
+    const { feedbackAvatar, feedbackAvatarLoading } = this.props;
+    return feedbackAvatarLoading ? <Loader className='avatar-loader' style={this.getLoaderStyle()} /> : feedbackAvatar;
   }
 
   render() {
-    const { feedbacks, feedbackAvatar, feedbackAvatarLoading, feedbackAvatarError } = this.props;
+    const { feedbacks } = this.props;
     return (
       <div>
         <List></List>
         <Card>
           <CardHeader
             title='Feedback'
-            avatar={<Loader className='avatar-loader' size={40} style={this.getLoaderStyle()} />}
+            avatar={this.renderAvatar()}
             subtitle='Leave some feedback here' />
           <CardText>
           </CardText>
@@ -38,6 +43,10 @@ Feedbacks.propTypes = {
   feedbackAvatarError: React.PropTypes.bool,
   feedbackAvatar: React.PropTypes.string,
   onGenerateAvatar: React.PropTypes.func,
+};
+
+Feedbacks.contextTypes = {
+  muiTheme: React.PropTypes.object.isRequired,
 };
 
 export default Feedbacks;

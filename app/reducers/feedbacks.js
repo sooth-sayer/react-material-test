@@ -20,7 +20,7 @@ function feedbacks(state = initialState, action) {
     return Object.assign({}, {
       ...state,
       feedbackAvatar: action.avatar,
-      // feedbackAvatarLoading: false,
+      feedbackAvatarLoading: false,
       feedbackAvatarError: false,
     });
 
