@@ -8,8 +8,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onCreate: (feedback) => {
-      dispatch(create(feedback));
+    onSend: (name, feedback) => {
+      dispatch(create({ name, feedback }));
     },
     onGenerateAvatar: () => {
       dispatch(generateAvatar());

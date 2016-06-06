@@ -2,7 +2,6 @@ import { types } from '../actions/feedbacks';
 
 const initialState = {
   feedbacks: [],
-  feedback: null,
   feedbackAvatar: null,
   feedbackAvatarLoading: false,
   feedbackAvatarError: false,
