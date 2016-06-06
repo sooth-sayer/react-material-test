@@ -1,6 +1,5 @@
 import React from 'react';
 import { List, ListItem } from 'material-ui/List';
-import Subheader from 'material-ui/Subheader';
 import { Card, CardHeader, CardText, CardActions } from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 import Avatar from 'material-ui/Avatar';

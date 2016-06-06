@@ -11,6 +11,8 @@ import LeftNav from './LeftNav';
 import { findRoute } from '../helpers/navigation';
 import { productsPath, feedbackPath } from '../router/routes';
 
+const theme = getMuiTheme();
+
 class App extends React.Component {
   constructor() {
     super();
@@ -40,13 +42,12 @@ class App extends React.Component {
     };
 
   getBodyStyle() {
-    return { marginTop: getMuiTheme().appBar.height };
+    return { marginTop: theme.appBar.height };
   }
 
   render() {
     const route = findRoute((path) => this.context.router.isActive(path));
     const title = route.description;
-    const theme = getMuiTheme();
 
     return (
       <MuiThemeProvider muiTheme={theme}>
