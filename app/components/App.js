@@ -39,6 +39,10 @@ class App extends React.Component {
       this.context.router.push(feedbackPath());
     };
 
+  getBodyStyle() {
+    return { marginTop: getMuiTheme().appBar.height };
+  }
+
   render() {
     const route = findRoute((path) => this.context.router.isActive(path));
     const title = route.description;
@@ -50,6 +54,7 @@ class App extends React.Component {
           <AppBar
             title={title}
             onLeftIconButtonTouchTap={this.openLeftNav}
+            style={{ position: 'fixed' }}
           >
             <LeftNav
               open={this.state.open}
@@ -60,7 +65,7 @@ class App extends React.Component {
               <MenuItem onTouchTap={this.gotoFeedback}>Feedback</MenuItem>
             </LeftNav>
           </AppBar>
-          <Paper className='app-body' zDepth={0}>
+          <Paper className='app-body' zDepth={0} style={this.getBodyStyle()}>
             {this.props.children}
           </Paper>
         </div>

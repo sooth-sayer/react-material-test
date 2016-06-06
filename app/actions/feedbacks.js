@@ -4,14 +4,14 @@ import keyMirror from 'keyMirror';
 const USER_GENERATOR_URL = 'https://randomuser.me/api';
 
 export const types = keyMirror({
-  CREATE: null,
+  FEEDBACK_CREATE: null,
   AVATAR_REQUEST: null,
   AVATAR_RECEIVE: null,
   AVATAR_RECEIVE_ERROR: null,
 });
 
 export function create(feedback) {
-  return { type: types.CREATE, feedback };
+  return { type: types.FEEDBACK_CREATE, feedback };
 }
 
 export function generateAvatar() {

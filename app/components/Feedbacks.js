@@ -1,11 +1,13 @@
 import React from 'react';
-import List from 'material-ui/List';
+import { List, ListItem } from 'material-ui/List';
+import Subheader from 'material-ui/Subheader';
 import { Card, CardHeader, CardText, CardActions } from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 import Avatar from 'material-ui/Avatar';
 import Loader from './shared/Loader';
 import RaisedButton from 'material-ui/RaisedButton';
 import FontIcon from 'material-ui/FontIcon';
+import Divider from 'material-ui/Divider';
 
 const EMPTY_FIELD_ERROR = 'This field is required';
 
@@ -49,6 +51,14 @@ class Feedbacks extends React.Component {
     };
   }
 
+  getFeedbackStyle() {
+    const appBarHeight = this.context.muiTheme.appBar.height;
+    return {
+      ...styles.feedback,
+      top: appBarHeight,
+    };
+  }
+
   renderAvatar() {
     var { feedbackAvatar, feedbackAvatarLoading } = this.props;
 
@@ -59,8 +69,25 @@ class Feedbacks extends React.Component {
         </Avatar>
       );
     } else {
-      return <Avatar src={feedbackAvatar} />;
+      return <Avatar src={feedbackAvatar} onTouchTap={(e) => {
+        this.props.onGenerateAvatar();
+        e.stopPropagation();
+      }} />;
     }
+  }
+
+  renderFeedbackItem(feedback, index, last) {
+    return (
+      <div key={index}>
+        <ListItem
+          leftAvatar={<Avatar src={feedback.avatar} />}
+          primaryText={feedback.name}
+          secondaryText={feedback.feedback}
+          secondaryTextLines={2}
+        />
+        {!last ? <Divider inset={true} /> : null}
+      </div>
+    );
   }
 
   render() {
@@ -69,19 +96,23 @@ class Feedbacks extends React.Component {
     const avatar = this.renderAvatar();
 
     return (
-      <div>
+      <div style={styles.container}>
         <List>
+          {feedbacks.map((item, index) => this.renderFeedbackItem(item, index, index === feedbacks.length - 1))}
         </List>
-        <Card>
+        <Card style={this.getFeedbackStyle()}>
           <CardHeader
             title='Feedback'
             avatar={avatar}
-            subtitle='Leave some feedback here' />
-          <CardText>
+            actAsExpander={true}
+            showExpandableButton={true}
+            subtitle='Please, leave some feedback' />
+          <CardText expandable={true}>
             <TextField hintText='Enter name here'
               value={name}
               errorText={nameError}
-              onChange={(event) => this.setState({ name: event.target.value })} />
+              onChange={(event) => this.setState({ name: event.target.value })}
+              style={styles.feedbackName} />
             <br />
             <TextField floatingLabelText='Leave some feedback here'
               value={feedback}
@@ -92,7 +123,7 @@ class Feedbacks extends React.Component {
               rows={4}
               style={styles.feedbackText} />
           </CardText>
-          <CardActions style={styles.actions}>
+          <CardActions expandable={true} style={styles.actions}>
             <RaisedButton label='Send'
               onTouchTap={this.handleSend}
               primary={true}
@@ -120,6 +151,18 @@ Feedbacks.contextTypes = {
 export default Feedbacks;
 
 const styles = {
+  container: {
+    width: '70%',
+  },
+  feedback: {
+    position: 'fixed',
+    right: 15,
+    width: 500,
+    marginTop: 15,
+  },
+  feedbackName: {
+    width: '100%',
+  },
   feedbackText: {
     width: '100%',
   },
