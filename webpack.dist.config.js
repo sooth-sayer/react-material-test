@@ -19,12 +19,13 @@ module.exports = {
       { test: /\.styl$/, loader: 'style!css!stylus' },
       { test: /\.css$/, loader: 'style!css' },
       { test: /\.js$/, loader: 'babel-loader', include: path.resolve(__dirname, 'app/') },
+      { test: /\.(jpeg|png|jpg|gif)$/, loader: 'url-loader' },
     ],
   },
 
   plugins: [
     new webpack.EnvironmentPlugin([
-      'ENV',
+      'NODE_ENV',
     ]),
     new webpack.optimize.UglifyJsPlugin({
       compress: {

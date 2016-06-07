@@ -25,7 +25,7 @@ flow:
 	$(DEV_ENV) flow check
 
 build_dist_bundle: build_deps
-	webpack --progress --color --config webpack.dist.config.js
+	NODE_ENV=production webpack --progress --color --config webpack.dist.config.js
 
 
 docker_start_dev:
