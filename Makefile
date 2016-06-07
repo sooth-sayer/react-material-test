@@ -26,6 +26,8 @@ flow:
 
 build_dist_bundle: build_deps
 	NODE_ENV=production webpack --progress --color --config webpack.dist.config.js
+dist: build_dist_bundle
+	cp build/main.bundle.js public/main.bundle.js
 
 
 docker_start_dev:
